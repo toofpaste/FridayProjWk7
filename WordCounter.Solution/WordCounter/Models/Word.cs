@@ -48,20 +48,20 @@ namespace WordCounter
                 _Sentence = sentence;
                 _Word = word;
             }
-            else if(check == 1)
+            else if(check > 1)
             {
-                _Sentence = BuildSent();
+                _Sentence = BuildSent(check);
                 _Word = word;
             }
         }
-        public string BuildSent()
+        public string BuildSent(int difficulty)
         {
             string cpuSent = "";
             int i = 0;
-            while(i < 5)
+            while(i < difficulty)
             {
                 Random random = new Random();
-                cpuSent += _rndSent[random.Next(1, 26) + i] + " ";
+                cpuSent += _rndSent[random.Next(1, (30 - difficulty)) + i] + " ";
                 i++;
             }
             return cpuSent;
