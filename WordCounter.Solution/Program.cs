@@ -10,6 +10,7 @@ namespace WordCounter
             bool runWhile = true;
             bool gameTime = false;
             bool hangMan = false;
+            int countWrong = 0;
             string userSentence = "";
             int x = 0;
             while(runWhile)
@@ -87,6 +88,15 @@ namespace WordCounter
                 }
                   else if(hangMan && !gameTime && runWhile)
                     {
+                     string[] hangBody = { "   O   ", " --|-- ",  "   |   ", "   |   ", "  / /  "};
+        //[0] head
+        //[1] left arm
+        //[2] top body
+        //[3] right arm
+        //[4] lower body
+        //[5] left leg
+        //[6] right leg
+
                     Word Guess = new Word("", "", 1);
                     string cpuWord = Guess.GetSent();
                     if(x == 0)
@@ -119,16 +129,43 @@ namespace WordCounter
                             else
                             {
                             x = 0;
+                            char[] holdSent = Guess.GetSent().ToCharArray();
+                            char guessHold = char.Parse(guessLetter);
+                            int wrong = 0;
+                            for(int i = 0; i < holdSent.Length -1; i++)
+                            {
+                                if(holdSent[i] == guessHold)
+                                    {
+                                    wrong++;
+                                    }
+                            }
+
+                            if(wrong == 0)
+                                {
+                                Console.WriteLine("It does not contain that letter");
+                                Console.WriteLine("A body part has been added");
+                                Console.WriteLine("Only " + (4-countWrong) + " more wrong guesses left");
+                                Console.WriteLine(" ");
+                                countWrong++;
+                                for(int i = 0; i < countWrong; i++)
+                                    {
+                                    Console.WriteLine(hangBody[i]);
+                                    }                                   
+                                }
                             guessWord = Guess.hangManPrint(guessLetter);
                             if(guessWord != 56 && guessWord < 99 )
                              {
                             userCorrect[guessWord] = char.Parse(guessLetter);
                              }
-                            else if(guessWord >= 100)
+                            else if(guessWord >= 100 && guessWord != 56)
                                 {
-                                userCorrect[(guessWord-101)] = char.Parse(guessLetter);
+                                userCorrect[(guessWord-100)] = char.Parse(guessLetter);
+
                                 guessWord = Guess.hangManPrint(guessLetter);
+                                if(guessWord != 56)
+                                    {
                                 userCorrect[guessWord]  = char.Parse(guessLetter);
+                                    }
 
                                 }
                             holdCorrect = new string(userCorrect);

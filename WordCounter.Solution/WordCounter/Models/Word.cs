@@ -9,45 +9,37 @@ namespace WordCounter
         private string _Word;
         private static Dictionary<int, string> _rndSent = new Dictionary<int, string>()
         {
-            {1, "zzcat"},
-            {2, "zzthe"},
-            {3, "zzquick"},
-            {4, "zzbrown"},
-            {5, "zzfox"},
-            {6, "zzjumped"},
-            {7, "zzover"},
-            {8, "zzthe"},
-            {9, "zzlazy"},
-            {10, "zzdog"},
-            {11, "zzhuman"},
-            {12, "zztorch"},
-            {13, "zzwas"},
-            {14, "zzdenied"},
-            {15, "zzhot"},
-            {16, "zzbank"},
-            {17, "zzloan"},
-            {18, "zzcare"},
-            {19, "zzdo"},
-            {20, "zznot"},
-            {21, "zzknow"},
-            {22, "zzwhat"},
-            {23, "zzother"},
-            {24, "zzwords"},
-            {25, "zzto"},
-            {26, "zzput"},
-            {27, "zzhere"},
-            {28, "zzbut"},
-            {29, "zzthis"},
-            {30, "zzworks"}
+            {1, "cat"},
+            {2, "the"},
+            {3, "quick"},
+            {4, "brown"},
+            {5, "fox"},
+            {6, "jumped"},
+            {7, "over"},
+            {8, "the"},
+            {9, "lazy"},
+            {10, "dog"},
+            {11, "human"},
+            {12, "torch"},
+            {13, "was"},
+            {14, "denied"},
+            {15, "hot"},
+            {16, "bank"},
+            {17, "loan"},
+            {18, "care"},
+            {19, "do"},
+            {20, "not"},
+            {21, "know"},
+            {22, "what"},
+            {23, "other"},
+            {24, "words"},
+            {25, "to"},
+            {26, "put"},
+            {27, "here"},
+            {28, "but"},
+            {29, "this"},
+            {30, "works"}
         };
-        private string[] hangBody = { "   O   ", " --    ", "   |   ", "    -- ", "   |   ", "  /    ", "    /  " };
-        //[0] head
-        //[1] left arm
-        //[2] top body
-        //[3] right arm
-        //[4] lower body
-        //[5] left leg
-        //[6] right leg
 
 
         public Word(string sentence, string word, int check)
@@ -70,29 +62,33 @@ namespace WordCounter
             char[] userLet = guessLetter.ToCharArray();
             int index = 56;
             int checkNum = 0;
-            Console.WriteLine(cpuWord.Length);
-            for(int i = 0; i < cpuWord.Length - 2; i++)
+            for(int i = 0; i < cpuWord.Length - 1; i++)
             {
                 if(userLet[0] == cpuWord[i])
                 {
                     checkNum++;
                 }
             }
-            for(int i = 0;i < cpuWord.Length - 2; i++)
+            for(int i = 0;i < cpuWord.Length - 1; i++)
             {
+                
                 if (userLet[0] == cpuWord[i])
                 {
-                    if (checkNum == 1)
+                    if (checkNum <= 1)
                     {
                         index = i;
-                    }else if(checkNum >= 2)
+                    }
+                    else if(checkNum >= 2)
                     {
                         cpuWord[i] = '1';
+                      _Sentence = new string(cpuWord);
+                        
                         index = i + 100;
+                        break;
                     }
                 }
             }
-           
+            
                 return index;
         }
 
