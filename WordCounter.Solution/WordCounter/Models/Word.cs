@@ -57,7 +57,6 @@ namespace WordCounter
         }
         public int hangManPrint(string guessLetter)
         {
-            Console.WriteLine(_Sentence);
             char[] cpuWord = _Sentence.ToCharArray();
             char[] userLet = guessLetter.ToCharArray();
             int index = 56;
