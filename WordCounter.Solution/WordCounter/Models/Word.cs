@@ -7,11 +7,64 @@ namespace WordCounter
     {
         private string _Sentence;
         private string _Word;
-       
-        public Word(string sentence, string word)
+        private static Dictionary<int, string> _rndSent = new Dictionary<int, string>()
         {
-            _Sentence = sentence;
-            _Word = word;
+            {1, "cat"},
+            {2, "the"},
+            {3, "quick"},
+            {4, "brown"},
+            {5, "fox"},
+            {6, "jumped"},
+            {7, "over"},
+            {8, "the"},
+            {9, "lazy"},
+            {10, "dog"},
+            {11, "human"},
+            {12, "torch"},
+            {13, "was"},
+            {14, "denied"},
+            {15, "a"},
+            {16, "bank"},
+            {17, "loan"},
+            {18, "i"},
+            {19, "do"},
+            {20, "not"},
+            {21, "know"},
+            {22, "what"},
+            {23, "other"},
+            {24, "words"},
+            {25, "to"},
+            {26, "put"},
+            {27, "here"},
+            {28, "but"},
+            {29, "this"},
+            {30, "works"}
+        };
+        
+        public Word(string sentence, string word, int check)
+        {
+            if (check == 0)
+            {
+                _Sentence = sentence;
+                _Word = word;
+            }
+            else if(check == 1)
+            {
+                _Sentence = BuildSent();
+                _Word = word;
+            }
+        }
+        public string BuildSent()
+        {
+            string cpuSent = "";
+            int i = 0;
+            while(i < 5)
+            {
+                Random random = new Random();
+                cpuSent += _rndSent[random.Next(1, 26) + i] + " ";
+                i++;
+            }
+            return cpuSent;
         }
         public string GetWord()
         {
