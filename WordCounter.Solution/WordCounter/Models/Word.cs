@@ -74,6 +74,24 @@ namespace WordCounter
         {
             return _Sentence;
         }
+        public bool CheckWord()
+        {
+            char[] userWord = _Word.ToCharArray();
+            int i = 0;
+            while(i < userWord.Length)
+            {
+                if(userWord[i] == ' ')
+                {
+                    return false;
+                }
+                i++;
+            }
+            if (i == userWord.Length)
+            {
+                return true;
+            }
+            else return false;
+        }
 
         public int WordFinder()
         {

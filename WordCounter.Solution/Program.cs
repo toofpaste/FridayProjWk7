@@ -8,18 +8,34 @@ namespace WordCounter
         public static void Main()
         {
             bool runWhile = true;
+            bool gameTime = false;
+            string userSentence ="";
+            int x = 0;
             while(runWhile)
                 {
+                    if(x == 0)
+                    {
                     Console.WriteLine("Enter A Sentence/Enter P to play against CPU/Enter Q to quit");
-                    string userSentence = Console.ReadLine();
+                    userSentence = Console.ReadLine();
                     runWhile = userSentence.ToLower() != "q";
-                    bool gameTime = userSentence.ToLower() == "p";
+                    gameTime = userSentence.ToLower() == "p";
+                    }
                     if(runWhile && !gameTime)
                     {
                         Console.WriteLine("Enter a Word to Find");
                         string userWord = Console.ReadLine();
                         Word checkThese = new Word(userSentence, userWord, 0);
+                        bool checkSpace = checkThese.CheckWord();
+                        if(checkSpace)
+                        {
+                        x = 0;
                         Console.WriteLine("The word " + checkThese.GetWord() + " appears " + checkThese.WordFinder() + " times in the sentence " + checkThese.GetSent());
+                        }
+                        else
+                        {
+                        x = 1;
+                        Console.WriteLine("Please Enter A Single Word To Check");
+                        }
                     }
                     else if(gameTime && runWhile)
                     {
@@ -27,16 +43,26 @@ namespace WordCounter
                   Console.WriteLine("Enter your guess");
                     string guessWord = Console.ReadLine().ToLower();
                     Word Guess = new Word("", guessWord, 1); 
-                if(Guess.WordFinder() >= 1)
-                    {
-                    Console.WriteLine("YOU WIN");
-                    Console.WriteLine("The word " + Guess.GetWord() + " appears " + Guess.WordFinder() + " times in the sentence " + Guess.GetSent());
-                    }
-                   else
-                    {
-                     Console.WriteLine("YOU LOSE");
-                    Console.WriteLine("The word " + Guess.GetWord() + " does not appear in the sentence " + Guess.GetSent());
-                    }
+                    bool checkSpace = Guess.CheckWord();
+                    if(checkSpace)
+                        {
+                        x = 0;
+                            if(Guess.WordFinder() >= 1)
+                                {
+                                Console.WriteLine("YOU WIN");
+                                Console.WriteLine("The word " + Guess.GetWord() + " appears " + Guess.WordFinder() + " times in the sentence " + Guess.GetSent());
+                                }
+                               else
+                                {
+                                 Console.WriteLine("YOU LOSE");
+                                Console.WriteLine("The word " + Guess.GetWord() + " does not appear in the sentence " + Guess.GetSent());
+                                }
+                        }
+                        else
+                        {
+                        x = 1;
+                        Console.WriteLine("Please Enter A Single Word To Check");
+                        }
                 }
                 }
         }
