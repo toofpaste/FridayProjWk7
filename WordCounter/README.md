@@ -1,3 +1,0 @@
-No test is available in C:\Users\mlarr\desktop\WordCounter\WordCounter\WordCounter.Tests\bin\Debug\netcoreapp2.2\WordCounter.Tests.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
-
-Additionally, path to test adapters can be specified using /TestAdapterPath command. Example  /TestAdapterPath:<pathToCustomAdapters>.
