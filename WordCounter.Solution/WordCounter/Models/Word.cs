@@ -118,7 +118,7 @@ namespace WordCounter
             int i = 0;
             while(i < userWord.Length)
             {
-                if(userWord[i] == ' ')
+                if(!(char.IsLetter(_Word[i])) || ((char.IsNumber(_Word[i]))) || userWord[i] == ' ')
                 {
                     return false;
                 }

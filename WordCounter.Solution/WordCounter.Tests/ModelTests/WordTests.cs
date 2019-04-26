@@ -59,5 +59,14 @@
             Word newWord = new Word(testSent, testWord, 0);
             Assert.AreEqual(true, newWord.CheckWord());
         }
+
+        [TestMethod]
+        public void CheckWord_ChecksForNumber_false()
+        {
+            string testWord = "catha22t";
+            string testSent = "The cat cat in the cat cathederal";
+            Word newWord = new Word(testSent, testWord, 0);
+            Assert.AreEqual(false, newWord.CheckWord());
+        }
     }
  }

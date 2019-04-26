@@ -172,6 +172,7 @@ namespace WordCounter
 
                             }
                         }
+                    Console.WriteLine("The computer's word was: " + cpuWord);
                     }
                 }
         }
