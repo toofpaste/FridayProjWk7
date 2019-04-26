@@ -9,18 +9,20 @@ namespace WordCounter
         {
             bool runWhile = true;
             bool gameTime = false;
+            bool hangMan = false;
             string userSentence = "";
             int x = 0;
             while(runWhile)
                 {
                     if(x == 0)
                     {
-                        Console.WriteLine("Enter A Sentence/Enter P to play against CPU/Enter Q to quit");
+                        Console.WriteLine("Enter A Sentence/Enter P to play against CPU/Enter H to play hang man/Enter Q to quit");
                         userSentence = Console.ReadLine();
                         runWhile = userSentence.ToLower() != "q";
                         gameTime = userSentence.ToLower() == "p";
+                        hangMan = userSentence.ToLower() == "h";
                     }
-                    if(runWhile && !gameTime)
+                    if(runWhile && !gameTime && !hangMan)
                     {
                         Console.WriteLine("Enter a Word to Find");
                         string userWord = Console.ReadLine();
@@ -37,7 +39,7 @@ namespace WordCounter
                             Console.WriteLine("Please Enter A Single Word To Check");
                         }
                     }
-                    else if(gameTime && runWhile)
+                    else if(gameTime && runWhile && !hangMan)
                     {
                     Console.WriteLine("Choose your difficulty");
                     Console.WriteLine("EASY: The cpu creates a sentence 10 words long.");
@@ -83,6 +85,58 @@ namespace WordCounter
                             Console.WriteLine("Please Enter A Single Word To Check");
                         }
                 }
+                  else if(hangMan && !gameTime && runWhile)
+                    {
+                    Word Guess = new Word("", "", 1);
+                    string cpuWord = Guess.GetSent();
+                    if(x == 0)
+                        {
+                            Console.WriteLine("WELCOME TO HANGMAN");
+                            Console.WriteLine("   O   ");
+                            Console.WriteLine(" --|-- ");
+                            Console.WriteLine("   |   ");
+                            Console.WriteLine("  / /  ");    
+                            Console.WriteLine(" ");              
+                        }
+                    int guessWord = 0;
+                    char[] userCorrect = new char[cpuWord.Length -1];
+                    for(int i = 0; i < userCorrect.Length; i++)
+                        {
+                        userCorrect[i] = '_';
+                        }
+                    string printF = new string(userCorrect);
+                    Console.WriteLine(printF + " is your word. It has " + printF.Length + " letters");
+                    string holdCorrect = "";
+                    while(holdCorrect != cpuWord)
+                            {
+                        Console.WriteLine("Guess A Letter");
+                        string guessLetter = Console.ReadLine().ToLower();
+                        if(guessLetter.Length != 1)
+                            {
+                            x = 1;
+                            Console.WriteLine("Please enter only 1 letter");
+                            }
+                            else
+                            {
+                            x = 0;
+                            guessWord = Guess.hangManPrint(guessLetter);
+                            if(guessWord != 56 && guessWord < 99 )
+                             {
+                            userCorrect[guessWord] = char.Parse(guessLetter);
+                             }
+                            else if(guessWord >= 100)
+                                {
+                                userCorrect[(guessWord-101)] = char.Parse(guessLetter);
+                                guessWord = Guess.hangManPrint(guessLetter);
+                                userCorrect[guessWord]  = char.Parse(guessLetter);
+
+                                }
+                            holdCorrect = new string(userCorrect);
+                            Console.WriteLine(holdCorrect + " There are " + holdCorrect.Length + " letters.");
+
+                            }
+                        }
+                    }
                 }
         }
     }
