@@ -26,7 +26,17 @@
     </ul>
   </div>
 </nav>
+
 @using WordCounter;
+<div class = "jumbotron">
+@if(Model.CheckWord()){
+<p>Word: @Model.GetWord() <br> Found: @Model.WordFinder() matches <br> Sentence: @Model.GetSent()</p>
+ <a class="btn btn-primary btn-lg" href="/Index/new" role="button">New Word</a>
+ }else{
+ <p>Please enter valid words</p>
+ <a class="btn btn-primary btn-lg" href="/Index/new" role="button">New Word</a>
+ }
+ </div>
 
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

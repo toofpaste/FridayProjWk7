@@ -7,9 +7,10 @@ namespace WordCounter.Controllers
     public class WordController : Controller
     {
         [HttpGet("/Index")]
-        public ActionResult Index()
+        public ActionResult Index(Word newWord)
         {
-            return View();
+           
+            return View(newWord);
         }
         [HttpGet("/Index/New")]
         public ActionResult CreateForm()
@@ -20,7 +21,7 @@ namespace WordCounter.Controllers
         public ActionResult CreateForm(string sentence, string word)
         {
             Word newWord = new Word(sentence, word, 0);
-            return RedirectToAction("Index");
+            return View("Index", newWord);
         }
     }
 }

@@ -114,19 +114,23 @@ namespace WordCounter
         }
         public bool CheckWord()
         {
-            char[] userWord = _Word.ToCharArray();
-            int i = 0;
-            while(i < userWord.Length)
+            if (!String.IsNullOrEmpty(_Word))
             {
-                if(!(char.IsLetter(_Word[i])) || ((char.IsNumber(_Word[i]))) || userWord[i] == ' ')
+                char[] userWord = _Word.ToCharArray();
+                int i = 0;
+                while (i < userWord.Length)
                 {
-                    return false;
+                    if (!(char.IsLetter(_Word[i])) || ((char.IsNumber(_Word[i]))) || userWord[i] == ' ')
+                    {
+                        return false;
+                    }
+                    i++;
                 }
-                i++;
-            }
-            if (i == userWord.Length)
-            {
-                return true;
+                if (i == userWord.Length)
+                {
+                    return true;
+                }
+                else return false;
             }
             else return false;
         }
