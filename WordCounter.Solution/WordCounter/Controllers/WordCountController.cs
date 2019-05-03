@@ -9,8 +9,6 @@ namespace WordCounter.Controllers
         [HttpGet("/Index")]
         public ActionResult Index()
         {
-            /*List<Car> allItems = Car.GetAll();
-            return View(allItems);*/
             return View();
         }
         [HttpGet("/Index/New")]
