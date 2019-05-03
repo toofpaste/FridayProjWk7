@@ -5,6 +5,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="~/Styles/Styles.css" type="text/css" media = "all">
 
     <title>Word Counter</title>
   </head>
@@ -26,7 +27,7 @@
     </ul>
   </div>
 </nav>
-
+<div class ="jumbotron">
 <form action="/Play" method="post">
 	<label class="radio-inline"><input type="radio" name="difficulty" value = 10 checked>Easy(10 words)</label>
 	<label class="radio-inline"><input type="radio" value = 5 name="difficulty">Medium(5 words)</label>
@@ -35,7 +36,7 @@
 	<input id="word" name="word" type="text">
 	 <button type="submit" class="btn btn-dark">Find</button>
   </form>
-
+  </div>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

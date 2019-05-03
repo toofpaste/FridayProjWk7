@@ -22,8 +22,8 @@ _a program that gathers both a word and sentence from a user, then checks how fr
 | Take in a word to check and makes it lowercase | Cat | "cat" | 
 | Split the string sentence into each word in a string array | "the cat is large" | {"the", "cat", "is", "large"} | 
 | check each element of the array for the check word | the == cat | false | 
-| if the above is true increment our wordCounter variable | (cat == cat) = true | wordCount++ | 
-| make sure words containing cat do not count | cat == cathederal | false | 
+| if the above is true add 1 to our word count| (cat = cat) is true | word count + 1 | 
+| make sure words containing partial words (cat) do not count | cat == cathederal | false | 
 | print out the user sentence, the word that was checked, and how many times it was found | submit | The word "Cat" appears *wordCount* times in the sentence "The Cat Is large" has 1 | 
 
 

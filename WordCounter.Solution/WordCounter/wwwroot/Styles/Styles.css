@@ -1,0 +1,20 @@
+#titleTop{
+    font-size: 35px;
+    text-align: center;
+    border: 1px solid black;
+    font-weight: bolder;
+
+}
+body {
+    background-image: url("https://i.imgur.com/irSg1O9.gif");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jumbotron{
+    opacity: 0.8;
+}
+h1 {
+    background-color: white;
+    opacity: 0.8;
+}
