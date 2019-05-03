@@ -32,9 +32,11 @@
 @if(Model.CheckWord()){
 <p>Word: @Model.GetWord() <br> Found: @Model.WordFinder() matches <br> Sentence: @Model.GetSent()</p>
  <a class="btn btn-primary btn-lg" href="/Index/new" role="button">New Word</a>
+ <a class="btn btn-primary btn-lg" href="/Previous/all" role="button">Show Previous Searches</a>
  }else{
  <p>Please enter valid words</p>
  <a class="btn btn-primary btn-lg" href="/Index/new" role="button">New Word</a>
+ <a class="btn btn-primary btn-lg" href="/Previous/all" role="button">Show Previous Searches</a>
  }
  </div>
 

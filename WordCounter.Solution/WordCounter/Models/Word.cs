@@ -7,6 +7,8 @@ namespace WordCounter
     {
         private string _Sentence;
         private string _Word;
+        private int _id;
+        private static List<Word> _history = new List<Word> { };
         private static Dictionary<int, string> _rndSent = new Dictionary<int, string>()
         {
             {1, "cat"},
@@ -48,6 +50,8 @@ namespace WordCounter
             {
                 _Sentence = sentence;
                 _Word = word;
+                _history.Add(this);
+                _id = _history.Count;
             }
             else if(check >= 1)
             {
@@ -112,6 +116,25 @@ namespace WordCounter
         {
             return _Sentence;
         }
+
+        public static List<Word> GetAll()
+        {
+            return _history;
+        }
+        public static void ClearAll()
+        {
+            _history.Clear();
+        }
+        public int getId()
+        {
+            return _id;
+        }
+
+        public static Word Find(int searchId)
+        {
+            return _history[searchId - 1];
+        }
+
         public bool CheckWord()
         {
             if (!String.IsNullOrEmpty(_Word))

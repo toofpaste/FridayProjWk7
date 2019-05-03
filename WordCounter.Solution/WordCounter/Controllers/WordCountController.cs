@@ -23,5 +23,25 @@ namespace WordCounter.Controllers
             Word newWord = new Word(sentence, word, 0);
             return View("Index", newWord);
         }
+        [HttpPost("/Previous/delete")]
+        public ActionResult DeleteAll()
+        {
+            Word.ClearAll();
+            return View();
+        }
+        [HttpGet("/Previous/all")]
+        public ActionResult Previous()
+        {
+            List<Word> allItems = Word.GetAll();
+            return View(allItems);
+        }
+
+        [HttpGet("/Show/{id}")]
+        public ActionResult Show(int id)
+        {
+            Word word = Word.Find(id);
+            return View(word);
+        }
+        
     }
 }
