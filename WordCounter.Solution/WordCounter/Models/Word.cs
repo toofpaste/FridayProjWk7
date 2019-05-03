@@ -8,6 +8,7 @@ namespace WordCounter
         private string _Sentence;
         private string _Word;
         private int _id;
+ 
         private static List<Word> _history = new List<Word> { };
         private static Dictionary<int, string> _rndSent = new Dictionary<int, string>()
         {
